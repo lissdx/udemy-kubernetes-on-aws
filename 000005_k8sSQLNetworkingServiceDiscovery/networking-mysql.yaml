@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: udemy-k8s-aws-po-mysql
+  labels:
+    label-app: udemy-k8s-aws-po-mysql
+spec:
+  containers:
+   - name: udemy-k8s-aws-po-mysql
+     image: mysql:5
+     env:
+      # Use secret in real life
+      - name: MYSQL_ROOT_PASSWORD
+        value: password
+      - name: MYSQL_DATABASE
+        value: fleetman
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: udemy-k8s-aws-svc-database
+spec:
+  selector:
+    label-app: udemy-k8s-aws-po-mysql
+  ports:
+    - port: 3306
+  type: ClusterIP

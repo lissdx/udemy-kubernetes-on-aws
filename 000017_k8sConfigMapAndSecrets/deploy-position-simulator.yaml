@@ -15,6 +15,9 @@ spec:
       containers:
         - name: position-simulator
           image: richardchesterwood/k8s-fleetman-position-simulator:release2
-          env:
-            - name: SPRING_PROFILES_ACTIVE
-              value: production-microservice
+          envFrom:
+            - configMapRef:
+                name: udemy-k8s-cm
+#          env:
+#            - name: SPRING_PROFILES_ACTIVE
+#              value: production-microservice

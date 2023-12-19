@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: udemy-k8s-aws-deployment-webapp
+  labels:
+    app: udemy-k8s-aws-deployment-webapp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      label-app: deployment-pod-webapp
+      label-release: 0-5
+  template:
+    metadata:
+      name: udemy-k8s-aws-deployment-template-webapp
+      labels:
+        label-app: deployment-pod-webapp
+        label-release: 0-5
+    spec:
+      containers:
+        - name: deployment-pod-webapp
+          image: richardchesterwood/k8s-fleetman-webapp-angular:release0
+          imagePullPolicy: IfNotPresent
+      restartPolicy: Always
+      

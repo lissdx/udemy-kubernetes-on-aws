@@ -25,7 +25,10 @@ spec:
           image: richardchesterwood/k8s-fleetman-api-gateway:performance
           env:
             - name: SPRING_PROFILES_ACTIVE
-              value: production-microservice
+              valueFrom:
+                configMapKeyRef:
+                  name: udemy-k8s-cm
+                  key: spring.profiles.active
 
 
 

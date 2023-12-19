@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: $Title$
+  name: udemy-k8s-cm
 data:
-  key: "$Value$"
-  $END$
+  spring.profiles.active: "production-microservice"
+  SPRING_PROFILES_ACTIVE: "production-microservice"

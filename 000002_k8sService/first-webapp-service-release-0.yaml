@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: udemy-k8s-aws-webapp
+spec:
+  # This defines which pods are going to be represented by this Service
+  # The service becomes a network endpoint for either other services
+  # or maybe external users to connect to (eg browser)
+  selector:
+    label-app: webapp
+    label-release: "0"
+  ports:
+    - name: http
+#    - protocol: TCP
+      # external port
+      # The port that will be exposed by this service.
+      port: 80
+      # internal port
+      # targetPort: 30080
+      nodePort: 30080
+  type: NodePort

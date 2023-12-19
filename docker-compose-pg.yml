@@ -1,0 +1,24 @@
+---
+version: '3.8'
+# start postgres DB server only
+services:
+  to-postgres:
+    container_name: to-postgres
+    image: postgres:14.1-alpine
+#    networks:
+#      - threat-optix-network
+    restart: always
+    environment:
+      - POSTGRES_USER=to_udemy_k8s_aws
+      - POSTGRES_PASSWORD=to_udemy_k8s_aws
+    ports:
+      - '5432:5432'
+    volumes:
+      - db:/var/lib/postgresql/data
+volumes:
+  db:
+    driver: local
+#networks:
+#  threat-optix-network:
+#    name: threat-optix-network
+...
